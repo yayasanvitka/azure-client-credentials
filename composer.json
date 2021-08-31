@@ -1,0 +1,30 @@
+{
+    "name": "yayasanvitka/azure-client-credentials",
+    "description": "Simple Azure OAuth2 Client Credentials",
+    "type": "project",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Adli I. Ifkar",
+            "email": "adly.shadowbane@gmail.com"
+        }
+    ],
+    "require": {
+        "PHP": "^8.0",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^7.0",
+        "illuminate/support": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yayasanvitka\\AzureClientCredentials\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Yayasanvitka\\AzureClientCredentials\\AzureClientCredentialsServiceProvider"
+            ]
+        }
+    }
+}
