@@ -94,9 +94,9 @@ class ClientCredentials
     {
         return Http::asForm()
             ->post($this->getUrl(), [
-                'client_id' => $this->clientId,
-                'client_secret' => $this->clientSecret,
-                'scope' => $this->scope,
+                'client_id' => $this->getClientId(),
+                'client_secret' => $this->getClientSecret(),
+                'scope' => $this->getScope(),
                 'grant_type' => 'client_credentials',
             ])->throw(function ($response, $e) {
                 $jsonError = $response->json();

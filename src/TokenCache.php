@@ -20,12 +20,14 @@ class TokenCache
      * @throws \Throwable
      */
     public function __construct(
-        protected string $cacheName = '',
+        protected string $cacheName,
         protected string $cacheTag = '',
     ) {
-        if (blank($this->cacheName)) {
-            $this->setCacheName(config('azure-client-credentials.cache_tag'));
+        if (blank($this->cacheTag)) {
+            $this->setCacheTag(config('azure-client-credentials.cache_tag'));
         }
+
+        $this->setCacheName($this->cacheName);
 
         $this->lifetime = config('azure-client-credentials.cache_lifetime');
     }
@@ -41,7 +43,15 @@ class TokenCache
     {
         cache()
             ->tags([$this->getCacheTag()])
-            ->put($this->getCacheName(), $token, $this->lifetime);
+            ->put($this->getCacheName(), $token, $this->getLifetime());
+    }
+
+    /**
+     * Get the token lifetime.
+     */
+    public function getLifetime()
+    {
+        return $this->lifetime;
     }
 
     /**
@@ -83,11 +93,11 @@ class TokenCache
     /**
      * Set the cache tag.
      *
-     * @param string $tag
+     * @param $tag
      *
      * @throws \Throwable
      */
-    public function setCacheTag(string $tag)
+    public function setCacheTag($tag)
     {
         throw_if(blank($tag), AzureClientCredentialsValidationException::cacheTagEmpty());
 

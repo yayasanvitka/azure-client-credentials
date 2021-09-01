@@ -50,13 +50,13 @@ trait SettingTrait
     }
 
     /**
-     * @param string $clientSecret
+     * @param $clientSecret
      *
      * @throws \Throwable
      *
      * @return ClientCredentials|self
      */
-    public function setClientSecret(string $clientSecret): self
+    public function setClientSecret($clientSecret): self
     {
         throw_if(blank($clientSecret), AzureClientCredentialsValidationException::clientSecretIsEmpty());
         $this->clientSecret = $clientSecret;
@@ -69,12 +69,16 @@ trait SettingTrait
      * If the scope provided starts with 'api://' and ends with '/.default', return as is.
      * If not, append with 'api://' and prepend with '/.default' as the requirements on Microsoft Azure OAuth2.
      *
-     * @param string $scope
+     * @param $scope
      *
      * @return ClientCredentials|self
      */
-    public function setScope(string $scope): self
+    public function setScope($scope): self
     {
+        if (blank($scope)) {
+            $scope = 'https://graph.microsoft.com/.default';
+        }
+
         if ($scope == 'https://graph.microsoft.com/.default') {
             $this->scope = $scope;
 
@@ -139,7 +143,7 @@ trait SettingTrait
     {
         return config('azure-client-credentials.auth_url')
             .'/'
-            .$this->tenantId
+            .$this->getTenantId()
             .config('azure-client-credentials.auth_endpoint');
     }
 
