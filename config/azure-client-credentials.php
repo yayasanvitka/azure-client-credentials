@@ -9,7 +9,7 @@ return [
     | This value is the cache tag name that will be used to store the JWT token.
     |
     */
-	'cache_tag' => env('CLIENT_CREDENTIALS_CACHE_TAG', 'jwt_client_credentials'),
+    'cache_tag' => env('CLIENT_CREDENTIALS_CACHE_TAG', 'jwt_client_credentials'),
 
     /*
     |--------------------------------------------------------------------------
@@ -20,7 +20,7 @@ return [
     | we are limiting it to 3000s (50 minutes).
     |
     */
-	'cache_lifetime' => 3000,
+    'cache_lifetime' => 3000,
 
     /*
     |--------------------------------------------------------------------------
@@ -84,9 +84,9 @@ return [
     | If you need to set this value, fill it with Application (client) GUID of your target App Registration.
     | For example, if you have Application GUID of '8688072f-b12d-4f26-b264-2f27fcc0cd23', set it to this value.
     | It will then format it to 'api://8688072f-b12d-4f26-b264-2f27fcc0cd23/.default'
-    | 
+    |
     | Before using it, make sure to 'Expose an API' on target App Registration, and modify the manifest so it can be used as Application Permission
-    | and set it on the App Registration that is used as 'client_id' as 'API Permission' with 'Application Permission'. 
+    | and set it on the App Registration that is used as 'client_id' as 'API Permission' with 'Application Permission'.
     |
     */
     'scope' => env('CLIENT_CREDENTIALS_SCOPE', 'https://graph.microsoft.com/.default'),

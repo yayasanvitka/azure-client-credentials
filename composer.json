@@ -1,12 +1,12 @@
 {
     "name": "yayasanvitka/azure-client-credentials",
     "description": "Simple Azure OAuth2 Client Credentials",
-    "type": "project",
     "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "Adli I. Ifkar",
-            "email": "adly.shadowbane@gmail.com"
+            "email": "adly.shadowbane@gmail.com",
+            "role": "Developer"
         }
     ],
     "require": {
@@ -15,9 +15,18 @@
         "guzzlehttp/guzzle": "^7.0",
         "illuminate/support": "^8.0"
     },
+    "require-dev": {
+        "orchestra/testbench": "^6.20",
+        "phpunit/phpunit": "^9.5"
+    },
     "autoload": {
         "psr-4": {
             "Yayasanvitka\\AzureClientCredentials\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Yayasanvitka\\AzureClientCredentials\\Test\\": "tests"
         }
     },
     "extra": {

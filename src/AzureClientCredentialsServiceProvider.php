@@ -2,7 +2,6 @@
 
 namespace Yayasanvitka\AzureClientCredentials;
 
-use GuzzleHttp\Client as HttpClient;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -21,13 +20,13 @@ class AzureClientCredentialsServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(
             __DIR__.'/../config/azure-client-credentials.php',
-            'laravel-wablas'
+            'azure-client-credentials'
         );
     }
 
     protected function offerPublishing()
     {
-        if (! function_exists('config_path')) {
+        if (!function_exists('config_path')) {
             // function not available and 'publish' not relevant in Lumen
             return;
         }
