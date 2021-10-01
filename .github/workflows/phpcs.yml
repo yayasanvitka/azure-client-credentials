@@ -28,7 +28,7 @@ jobs:
       run: |
         composer update --prefer-dist --no-suggest --no-progress
 
-    - run: composer php-cs-fixer
+    - run: composer php-cs-fixer src
       continue-on-error: true
 
     - run: git checkout -- composer.json
