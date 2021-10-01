@@ -17,7 +17,8 @@
     },
     "require-dev": {
         "orchestra/testbench": "^6.20",
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "pestphp/pest": "^1.20"
     },
     "autoload": {
         "psr-4": {
@@ -35,5 +36,8 @@
                 "Yayasanvitka\\AzureClientCredentials\\AzureClientCredentialsServiceProvider"
             ]
         }
+    },
+    "scripts": {
+        "php-cs-fixer": "php-cs-fixer fix --config=.php-cs.dist.php src"
     }
 }
