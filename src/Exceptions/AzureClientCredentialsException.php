@@ -2,9 +2,6 @@
 
 namespace Yayasanvitka\AzureClientCredentials\Exceptions;
 
-use JetBrains\PhpStorm\Pure;
-use Throwable;
-
 /**
  * Class AzureClientCredentialsException.
  *
@@ -12,5 +9,4 @@ use Throwable;
  */
 class AzureClientCredentialsException extends \Exception
 {
-
 }
