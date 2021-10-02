@@ -33,4 +33,4 @@ jobs:
         composer update --prefer-dist --no-suggest --no-progress
 
     - name: Execute Unit Tests
-      run: vendor/bin/pest test
+      run: vendor/bin/pest
