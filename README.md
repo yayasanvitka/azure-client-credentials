@@ -2,6 +2,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 ![GitHub Workflow Status (event)](https://img.shields.io/github/workflow/status/yayasanvitka/azure-client-credentials/PHPUnit%20Tests)
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/yayasanvitka/azure-client-credentials)
+![Coverage](https://img.shields.io/github/v/tag/yayasanvitka/azure-client-credentials)
+[![codecov](https://codecov.io/gh/yayasanvitka/azure-client-credentials/branch/test-phpunit-action/graph/badge.svg?token=46XEANZJOT)](https://codecov.io/gh/yayasanvitka/azure-client-credentials)
 
 ## Documentation, Installation, and Usage Instructions
 

@@ -11,11 +11,19 @@ use Illuminate\Support\ServiceProvider;
  */
 class AzureClientCredentialsServiceProvider extends ServiceProvider
 {
+    /**
+     * Boot the application.
+     */
     public function boot()
     {
         $this->offerPublishing();
     }
 
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
     public function register()
     {
         $this->mergeConfigFrom(
@@ -24,15 +32,18 @@ class AzureClientCredentialsServiceProvider extends ServiceProvider
         );
     }
 
+    /**
+     * Only publish if `config_path` function is available.
+     * It would not offer publishing in Lumen.
+     *
+     * @return void
+     */
     protected function offerPublishing()
     {
-        if (!function_exists('config_path')) {
-            // function not available and 'publish' not relevant in Lumen
-            return;
+        if (function_exists('config_path')) {
+            $this->publishes([
+                __DIR__.'/../config/azure-client-credentials.php' => config_path('azure-client-credentials.php'),
+            ], 'config');
         }
-
-        $this->publishes([
-            __DIR__.'/../config/azure-client-credentials.php' => config_path('azure-client-credentials.php'),
-        ], 'config');
     }
 }

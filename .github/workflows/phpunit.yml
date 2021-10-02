@@ -3,7 +3,7 @@ name: PHPUnit Tests
 on:
   push:
     branches:
-      - test-phpunit-action
+      - master
 
 jobs:
   phpunit-tests:
@@ -30,16 +30,10 @@ jobs:
 
     - name: Install dependencies
       run: |
-        composer update --prefer-dist --no-suggest --no-progress
+        composer update --prefer-dist --no-progress
 
     - name: Execute Unit Tests
       run: vendor/bin/pest
-
-#    - name: Create coverage badge
-#      uses: timkrase/phpunit-coverage-badge@v1.2.0
-#      with:
-#        push_badge: true
-#        repo_token: ${{ secrets.GH_TOKEN }}
 
     - name: Creating codecov badge
       uses: codecov/codecov-action@v2
