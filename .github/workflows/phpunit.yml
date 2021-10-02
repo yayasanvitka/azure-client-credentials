@@ -35,8 +35,14 @@ jobs:
     - name: Execute Unit Tests
       run: vendor/bin/pest
 
-    - name: Create coverage badge
-      uses: timkrase/phpunit-coverage-badge@v1.2.0
+#    - name: Create coverage badge
+#      uses: timkrase/phpunit-coverage-badge@v1.2.0
+#      with:
+#        push_badge: true
+#        repo_token: ${{ secrets.GH_TOKEN }}
+
+    - name: Creating codecov badge
+      uses: codecov/codecov-action@v2
       with:
-        push_badge: true
-        repo_token: ${{ secrets.GH_TOKEN }}
+        files: ./clover.xml
+        flags: phpunit-test
