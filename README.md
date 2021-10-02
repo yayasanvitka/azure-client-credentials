@@ -4,14 +4,20 @@
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/yayasanvitka/azure-client-credentials)
 [![codecov](https://codecov.io/gh/yayasanvitka/azure-client-credentials/branch/master/graph/badge.svg?token=46XEANZJOT)](https://codecov.io/gh/yayasanvitka/azure-client-credentials)
 
-## Documentation, Installation, and Usage Instructions
-
-<small>WIP</small>
-
 ## About
 
 This package does OAuth2 Client credentials grant with Microsoft Azure OAuth2 backend.
 Client Credentials Grant is used to authorize application when calling API on another application. For more information, please visit [Microsoft OAuth2 Client Credentials Grant Documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow).
+
+## Documentation, Installation, and Usage Instructions
+
+### Installation
+```bash
+composer require yayasanvitka/azure-client-credentials
+```
+
+### Documentation
+<small>WIP</small>
 
 ## Changelog
 

@@ -2,6 +2,9 @@
 
 All notable changes will be documented here
 
+## 1.0.0
+- Initial Release
+
 ## 0.1.2
 - Fixed version info in composer.json
 

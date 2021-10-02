@@ -1,4 +1,4 @@
-MIT License
+The MIT License (MIT)
 
 Copyright (c) Yayasan Vitka <info@yayasanvitka.id>
 
