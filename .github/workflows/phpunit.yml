@@ -32,5 +32,11 @@ jobs:
       run: |
         composer update --prefer-dist --no-suggest --no-progress
 
+    - name: Create coverage badge
+      uses: timkrase/phpunit-coverage-badge@v1.2.0
+
     - name: Execute Unit Tests
       run: vendor/bin/pest
+      with:
+        push_badge: true
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
