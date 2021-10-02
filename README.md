@@ -1,4 +1,7 @@
 # Azure Client Credentials for Laravel
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+![GitHub Workflow Status (event)](https://img.shields.io/github/workflow/status/yayasanvitka/azure-client-credentials/PHPUnit%20Tests)
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/yayasanvitka/azure-client-credentials)
 
 ## Documentation, Installation, and Usage Instructions
 
