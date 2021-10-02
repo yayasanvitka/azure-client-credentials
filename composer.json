@@ -1,7 +1,7 @@
 {
     "name": "yayasanvitka/azure-client-credentials",
     "description": "Simple Azure OAuth2 Client Credentials",
-    "license": "GPL-3.0-or-later",
+    "license": "MIT",
     "authors": [
         {
             "name": "Adli I. Ifkar",
