@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  phpunit-tests:
+  phpunit-tests-80:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
@@ -40,3 +40,31 @@ jobs:
       with:
         files: ./clover.xml
         flags: phpunit-test
+  phpunit-tests-81:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      COMPOSER_NO_INTERACTION: 1
+      CLIENT_CREDENTIALS_TENANT_ID: ${{ secrets.CLIENT_CREDENTIALS_TENANT_ID }}
+      CLIENT_CREDENTIALS_CLIENT_ID: ${{ secrets.CLIENT_CREDENTIALS_CLIENT_ID }}
+      CLIENT_CREDENTIALS_SECRET: ${{ secrets.CLIENT_CREDENTIALS_SECRET }}
+      CLIENT_CREDENTIALS_SCOPE: ${{ secrets.CLIENT_CREDENTIALS_SCOPE }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: 8.1
+        coverage: xdebug
+        tools: composer:v2
+        extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif
+
+    - name: Install dependencies
+      run: |
+        composer update --prefer-dist --no-progress
+
+    - name: Execute Unit Tests
+      run: vendor/bin/pest
