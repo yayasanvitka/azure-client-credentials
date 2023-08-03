@@ -55,7 +55,7 @@ class ClientCredentials
         $this->setClientSecret($clientSecret);
         $this->setScope($scope);
 
-        $this->tokenCache = new TokenCache(cacheName: $this->getClientId());
+        $this->tokenCache = new TokenCache(cacheName: $this->getClientId() . '_' . $this->getScope());
     }
 
     /**
@@ -101,8 +101,11 @@ class ClientCredentials
             ])->throw(function ($response, $e) {
                 $jsonError = $response->json();
                 if (!blank($jsonError)) {
-                    throw new AzureClientCredentialsException("[{$jsonError['error']}] {$jsonError['error_description']}", $jsonError['error_codes'][0], $e);
+                    throw new AzureClientCredentialsException(
+                        "[{$jsonError['error']}] {$jsonError['error_description']}", $jsonError['error_codes'][0], $e
+                    );
                 }
             })->json();
     }
+
 }
