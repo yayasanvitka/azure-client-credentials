@@ -29,10 +29,10 @@ class ClientCredentials
      * @throws \Throwable
      */
     public function __construct(
-        string $tenantId = null,
-        string $clientId = null,
-        string $clientSecret = null,
-        string $scope = null
+        ?string $tenantId = null,
+        ?string $clientId = null,
+        ?string $clientSecret = null,
+        ?string $scope = null
     ) {
         if (blank($tenantId)) {
             $tenantId = config('azure-client-credentials.tenant_id');
