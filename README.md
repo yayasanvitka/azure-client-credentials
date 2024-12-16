@@ -24,6 +24,10 @@ Run the following command to publish the package:
 ```bash
 php artisan vendor:publish --provider="Yayasanvitka\AzureOauth2Validator\AzureOauth2ValidatorServiceProvider"
 ```
+Then run command below to migrate published table.
+```bash
+php artisan migrate
+```
 
 #### 3. Add Configurations to Database Seeder
 Add the following array to `Database/Seeders/ConfigTableSeeder@SettingList`:
@@ -37,17 +41,15 @@ Add the following array to `Database/Seeders/ConfigTableSeeder@SettingList`:
 'active' => 1,
 'created_at' => now('Asia/Jakarta'),
 'updated_at' => now('Asia/Jakarta'),
-],
+]
+```
+Then run command below to seed the new configuration.
+```
+php artisan db:seed --class=ConfigTableSeeder
 ```
 > **Note:** You may need to log in to the app as a sysadmin (non-Microsoft account) first to ensure the config is loaded.
 
-#### 4. Run Database Migrations
-Run the following command to refresh the database and seed the new configuration:
-```bash
-php artisan db:seed --class=ConfigTableSeeder
-```
-
-#### 5. Add Routes for Azure Authentication
+#### 4. Add Routes for Azure Authentication
 Add the following routes to `routes/azure.php`:
 ```php
 <?php
@@ -59,14 +61,14 @@ Route::get('/login/azurecallback', [AppAzureMiddleware::class, 'azurecallback'])
 Route::get('/logout/azure', [AppAzureMiddleware::class, 'azurelogout'])->name('auth.logout');
 ```
 
-#### 6. Register Azure Routes
+#### 5. Register Azure Routes
 Add the following code to `bootstrap/app.php` to register the Azure routes:
 ```php
 Route::middleware('web')
     ->group(base_path('routes/azure.php'));
 ```
 
-#### 7. Implement Middleware for Azure Authentication
+#### 6. Implement Middleware for Azure Authentication
 Create a file `app/Http/Middleware/AppAzureMiddleware.php` and add the following content:
 ```php
 <?php
@@ -207,7 +209,7 @@ class AppAzureMiddleware extends Azure
 }
 ```
 
-#### 8. Update Environment Variables
+#### 7. Update Environment Variables
 Add these entries to your `.env` file:
 ```env
 AZURE_CLIENT_ID=
@@ -217,7 +219,7 @@ AZURE_RESOURCE=
 AZURE_SCOPE=
 ```
 
-#### 9. Update `Setting` Model
+#### 8. Update `Setting` Model
 Add the following method to the `Setting` model:
 ```php
 public static function allowedDomains(): ?array
@@ -228,7 +230,7 @@ public static function allowedDomains(): ?array
 }
 ```
 
-#### 10. Update `User` Model
+#### 9. Update `User` Model
 Add this method to define the relation with user web tokens:
 ```php
 public function webTokens(): \Illuminate\Database\Eloquent\Relations\HasMany
