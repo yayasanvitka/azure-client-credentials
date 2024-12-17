@@ -33,20 +33,72 @@ php artisan migrate
 Add the following array to `Database/Seeders/ConfigTableSeeder@SettingList`:
 ```php
 [
-'key' => 'system.employee.allowed_domains',
-'name' => 'Allowed domain to login',
-'description' => '',
-'value' => '[{"domain":"btp.ac.id"},{"domain":"iteba.ac.id"},{"domain":"yayasanvitka.id"}]',
-'field' => '{"name":"value","label":"Value","type":"repeatable","fields":[{"name":"domain","type":"text","label":"Domain"}]}',
-'active' => 1,
-'created_at' => now('Asia/Jakarta'),
-'updated_at' => now('Asia/Jakarta'),
+    'key' => 'system.employee.allowed_domains',
+    'name' => 'Allowed domain to login',
+    'description' => '',
+    'value' => '[{"domain":"btp.ac.id"},{"domain":"iteba.ac.id"},{"domain":"yayasanvitka.id"}]',
+    'field' => '{"name":"value","label":"Value","type":"repeatable","fields":[{"name":"domain","type":"text","label":"Domain"}]}',
+    'active' => 1,
+    'created_at' => now('Asia/Jakarta'),
+    'updated_at' => now('Asia/Jakarta'),
+],
+[
+    'key' => 'azure.client.id',
+    'name' => 'Azure OAuth2 Application (client) ID (UUID)',
+    'description' => 'Application (client) ID (UUID) for Azure Authentication',
+    'value' => '',
+    'field' => '{"name":"value","label":"Azure OAuth2 Application (client) ID","type":"text"}',
+    'active' => 1,
+    'created_at' => now('Asia/Jakarta'),
+    'updated_at' => now('Asia/Jakarta'),
+],
+[
+    'key' => 'azure.client.secret',
+    'name' => 'Azure OAuth2 Application (client) Secret',
+    'description' => 'Application (client) Secret for Azure Authentication',
+    'value' => '',
+    'field' => '{"name":"value","label":"Azure OAuth2 Application (client) Secret","type":"text"}',
+    'active' => 1,
+    'created_at' => now('Asia/Jakarta'),
+    'updated_at' => now('Asia/Jakarta'),
+],
+[
+    'key' => 'azure.tenant_id',
+    'name' => 'Directory (tenant) ID (UUID)',
+    'description' => 'Directory (tenant) ID (UUID) for Azure Authentication',
+    'value' => '',
+    'field' => '{"name":"value","label":"Directory (tenant) ID","type":"text"}',
+    'active' => 1,
+    'created_at' => now('Asia/Jakarta'),
+    'updated_at' => now('Asia/Jakarta'),
+],
+[
+    'key' => 'azure.resource',
+    'name' => 'Azure OAuth2 Resource',
+    'description' => 'Valid resource to authenticate to Azure',
+    'value' => '',
+    'field' => '{"name":"value","label":"Resource","type":"text"}',
+    'active' => 1,
+    'created_at' => now('Asia/Jakarta'),
+    'updated_at' => now('Asia/Jakarta'),
+],
+[
+    'key' => 'azure.scope',
+    'name' => 'Azure OAuth2 Scope',
+    'description' => 'Valid scope to authenticate to Azure',
+    'value' => '',
+    'field' => '{"name":"value","label":"Scope","type":"text"}',
+    'active' => 1,
+    'created_at' => now('Asia/Jakarta'),
+    'updated_at' => now('Asia/Jakarta'),
 ]
 ```
 Then run command below to seed the new configuration.
-```
+```bash
 php artisan db:seed --class=ConfigTableSeeder
 ```
+And dont forget to register the azure config at `App\Providers\ConfigServiceProvider@overrideConfigValues`
+
 > **Note:** You may need to log in to the app as a sysadmin (non-Microsoft account) first to ensure the config is loaded.
 
 #### 4. Add Routes for Azure Authentication
