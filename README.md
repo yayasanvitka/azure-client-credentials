@@ -261,17 +261,7 @@ class AppAzureMiddleware extends Azure
 }
 ```
 
-#### 7. Update Environment Variables
-Add these entries to your `.env` file:
-```env
-AZURE_CLIENT_ID=
-AZURE_CLIENT_SECRET=
-AZURE_TENANT_ID=
-AZURE_RESOURCE=
-AZURE_SCOPE=
-```
-
-#### 8. Update `Setting` Model
+#### 7. Update `Setting` Model
 Add the following method to the `Setting` model:
 ```php
 public static function allowedDomains(): ?array
@@ -282,7 +272,7 @@ public static function allowedDomains(): ?array
 }
 ```
 
-#### 9. Update `User` Model
+#### 8. Update `User` Model
 Add this method to define the relation with user web tokens:
 ```php
 public function webTokens(): \Illuminate\Database\Eloquent\Relations\HasMany
