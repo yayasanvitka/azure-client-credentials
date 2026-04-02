@@ -1,4 +1,4 @@
-name: Fix Codestyle
+name: Laravel Pint
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  php-cs-fixer:
+  pint:
     name: Fix Code Style
     timeout-minutes: 10
     runs-on: ubuntu-latest
@@ -20,7 +20,7 @@ jobs:
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: 8.0
+        php-version: 8.3
         coverage: none
         tools: composer:v2
 
@@ -28,12 +28,12 @@ jobs:
       run: |
         composer update --prefer-dist --no-suggest --no-progress
 
-    - run: composer php-cs-fixer src
+    - run: ./vendor/bin/pint
       continue-on-error: true
 
     - run: git checkout -- composer.json
 
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        commit_message: php-cs-fixer
+        commit_message: laravel-pint
         commit_author: azure-client-credentials <azure-client-credentials@users.noreply.github.com>

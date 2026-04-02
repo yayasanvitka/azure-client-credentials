@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  phpunit-tests-80:
+  phpunit-tests-83:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
@@ -18,12 +18,12 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: 8.0
+        php-version: 8.3
         coverage: xdebug
         tools: composer:v2
         extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif
@@ -36,11 +36,11 @@ jobs:
       run: vendor/bin/pest
 
     - name: Creating codecov badge
-      uses: codecov/codecov-action@v2
+      uses: codecov/codecov-action@v4
       with:
         files: ./clover.xml
         flags: phpunit-test
-  phpunit-tests-81:
+  phpunit-tests-84:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
@@ -52,12 +52,12 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: 8.1
+        php-version: 8.4
         coverage: xdebug
         tools: composer:v2
         extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif
