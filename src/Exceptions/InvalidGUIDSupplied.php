@@ -12,8 +12,8 @@ use JetBrains\PhpStorm\Pure;
 class InvalidGUIDSupplied extends \Exception
 {
     /**
-     * @param string $message
-     * @param \Throwable|null $previous
+     * @param  string  $message
+     * @param  \Throwable|null  $previous
      */
     #[Pure]
     public function __construct($message = '', ?\Throwable $previous = null)

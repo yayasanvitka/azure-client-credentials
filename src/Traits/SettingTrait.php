@@ -20,7 +20,7 @@ trait SettingTrait
     public string $scope;
 
     /**
-     * @param string $tenantId
+     * @param  string  $tenantId
      *
      * @throws \Throwable
      *
@@ -35,7 +35,7 @@ trait SettingTrait
     }
 
     /**
-     * @param string $clientId
+     * @param  string  $clientId
      *
      * @throws \Throwable
      *
@@ -50,7 +50,7 @@ trait SettingTrait
     }
 
     /**
-     * @param $clientSecret
+     * @param  $clientSecret
      *
      * @throws \Throwable
      *
@@ -69,8 +69,7 @@ trait SettingTrait
      * If the scope provided starts with 'api://' and ends with '/.default', return as is.
      * If not, append with 'api://' and prepend with '/.default' as the requirements on Microsoft Azure OAuth2.
      *
-     * @param $scope
-     *
+     * @param  $scope
      * @return ClientCredentials|self
      */
     public function setScope($scope): self
@@ -148,8 +147,8 @@ trait SettingTrait
     }
 
     /**
-     * @param string $uuid
-     * @param string $type
+     * @param  string  $uuid
+     * @param  string  $type
      *
      * @throws \Throwable
      *

@@ -2,6 +2,7 @@
 
 namespace Yayasanvitka\AzureClientCredentials;
 
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
 use JetBrains\PhpStorm\ArrayShape;
 use Yayasanvitka\AzureClientCredentials\Exceptions\AzureClientCredentialsException;
@@ -21,10 +22,10 @@ class ClientCredentials
     /**
      * Client Credentials Constructor.
      *
-     * @param string|null $tenantId
-     * @param string|null $clientId
-     * @param string|null $clientSecret
-     * @param string|null $scope
+     * @param  string|null  $tenantId
+     * @param  string|null  $clientId
+     * @param  string|null  $clientSecret
+     * @param  string|null  $scope
      *
      * @throws \Throwable
      */
@@ -62,7 +63,7 @@ class ClientCredentials
      * Get the Access Token.
      * If token is not exists on cache, fetch a new one.
      *
-     * @throws \Illuminate\Http\Client\RequestException
+     * @throws RequestException
      *
      * @return string
      */
@@ -80,7 +81,7 @@ class ClientCredentials
     }
 
     /**
-     * @throws \Illuminate\Http\Client\RequestException
+     * @throws RequestException
      *
      * @return array|mixed
      */
@@ -100,7 +101,7 @@ class ClientCredentials
                 'grant_type' => 'client_credentials',
             ])->throw(function ($response, $e) {
                 $jsonError = $response->json();
-                if (!blank($jsonError)) {
+                if (! blank($jsonError)) {
                     throw new AzureClientCredentialsException("[{$jsonError['error']}] {$jsonError['error_description']}", $jsonError['error_codes'][0], $e);
                 }
             })->json();

@@ -2,6 +2,7 @@
 
 namespace Yayasanvitka\AzureClientCredentials\Test;
 
+use Illuminate\Http\Client\RequestException;
 use Yayasanvitka\AzureClientCredentials\ClientCredentials;
 use Yayasanvitka\AzureClientCredentials\Exceptions\AzureClientCredentialsException;
 use Yayasanvitka\AzureClientCredentials\Test\Traits\HelperTrait;
@@ -83,7 +84,7 @@ class ClientCredentialsTest extends TestCase
             'azure-client-credentials.auth_url' => 'https://google.com',
         ]);
 
-        $this->expectException(\Illuminate\Http\Client\RequestException::class);
+        $this->expectException(RequestException::class);
         app()->make(ClientCredentials::class)->fetch();
     }
 

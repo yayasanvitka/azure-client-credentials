@@ -102,5 +102,4 @@ class CacheTest extends TestCase
         $tokenCache->setCache($cachedValue);
         $this->assertEquals('', $tokenCache->getCache());
     }
-
 }

@@ -14,8 +14,8 @@ class TokenCache
     protected int $lifetime;
 
     /**
-     * @param string $cacheName
-     * @param string $cacheTag
+     * @param  string  $cacheName
+     * @param  string  $cacheTag
      *
      * @throws \Throwable
      */
@@ -35,7 +35,7 @@ class TokenCache
     /**
      * Set cache value.
      *
-     * @param string $token
+     * @param  string  $token
      *
      * @throws \Exception
      */
@@ -93,7 +93,7 @@ class TokenCache
     /**
      * Set the cache tag.
      *
-     * @param $tag
+     * @param  $tag
      *
      * @throws \Throwable
      */
@@ -107,7 +107,7 @@ class TokenCache
     /**
      * Set the cache name.
      *
-     * @param string $name
+     * @param  string  $name
      *
      * @throws \Throwable
      */

@@ -7,6 +7,4 @@ namespace Yayasanvitka\AzureClientCredentials\Exceptions;
  *
  * @package Yayasanvitka\AzureClientCredentials\Exceptions
  */
-class AzureClientCredentialsException extends \Exception
-{
-}
+class AzureClientCredentialsException extends \Exception {}

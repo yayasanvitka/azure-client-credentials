@@ -2,7 +2,7 @@
 
 namespace Yayasanvitka\AzureClientCredentials\Test;
 
-use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
+use Illuminate\Foundation\Application;
 use Yayasanvitka\AzureClientCredentials\AzureClientCredentialsServiceProvider;
 
 /**
@@ -12,14 +12,13 @@ use Yayasanvitka\AzureClientCredentials\AzureClientCredentialsServiceProvider;
  */
 class TestCase extends \Orchestra\Testbench\TestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
     }
 
     /**
-     * @param \Illuminate\Foundation\Application $app
-     *
+     * @param  Application  $app
      * @return array
      */
     protected function getPackageProviders($app)
